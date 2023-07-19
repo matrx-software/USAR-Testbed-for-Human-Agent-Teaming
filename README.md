@@ -1,4 +1,4 @@
-# USAR-Testbed-for-Human-Agent-Teaming
+# USAR Testbed for Human-Agent Teaming
 
 This is code for an urban-search-and-rescue task that can be performed by different agents. Agents can be human-controlled or programmed. This task was designed to perform human-agent teaming research. More specifically, is was used to study co-learning as an important mechanism within human-agent teaming, using a Wizard-of-Oz method. A detailed description of the task and the research it was used for can be found in the following published paper:
 
