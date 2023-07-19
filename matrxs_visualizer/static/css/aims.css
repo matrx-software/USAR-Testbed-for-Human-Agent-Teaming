@@ -1,0 +1,98 @@
+.aims-room-number {
+    color: white;
+    margin-left: -9px;
+    position: absolute;
+    z-index: 1000;
+    width: max-content;
+}
+
+.aims-victim-number {
+    color: white;
+    z-index: 1000;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    text-shadow: black 0px 0px 6px;
+}
+
+.aims-battery-level {
+    color: black;
+    position: absolute;
+    top: -25px;
+    width: 100%;
+    text-align: left;
+    text-shadow: white 0 0 4px;
+    padding-right: 2px;
+}
+
+.aims-score {
+    color: black;
+    position: absolute;
+    text-shadow: white 0px 0px 4px;
+    bottom: 0;
+    right: 15px;
+    pointer-events: none;
+    font-weight: 500;
+    z-index: 3000;
+}
+
+.aims-score-left {
+    right: unset;
+    left: 0;
+}
+
+#messages {
+    min-width: 15vw;
+    max-height: 35vh;
+    background: #e1e1e1;
+    border-radius: 5px;
+}
+
+.communication .custom-select {
+    width: unset;
+}
+
+.communication select {
+    margin: -3px 5px 0 8px;
+}
+
+.communication button {
+    margin: -3px 0 0 5px;
+}
+
+.communication .row {
+    margin: 0 0 10px 10px;
+}
+
+#chat_form_input, #chat_form_submit {
+    display: none;
+}
+
+.completion-ribbon {
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    min-height:200px;
+    top: 35%;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    vertical-align: center;
+    z-index: 10000;
+    background-color: rgba(74, 74, 74, 0.88);
+}
+
+.completion-ribbon .completion-text {
+    font-size: 2em;
+    font-weight: bold;
+    color: #04d204;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#grid {
+    float: left;
+}

@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="/static/images/X.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/dist/bootstrap/bootstrap-4.4.1.min.css" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/GUI.css">
+
+    <!-- Usecase specific CSS -->
+    <link rel="stylesheet" href="/static/css/aims.css">
+
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="/static/dist/fontawesome-free-5.12.0-web/css/all.css">
+
+    <title>{{ id }} view</title>
+</head>
+
+<body>
+
+    <!-- Toolbar -->
+    <div id="matrxs-toolbar" class="row toolbar bg-dark">
+        <div class="col-sm">
+            <img src="/static/images/matrx_logo_light.svg" alt="MATRX" id="matrx_logo">
+            <button type="button" class="btn btn-dark" id="start_button" style="display:none;"><i class="fas fa-play text-light"></i></button>
+            <button type="button" class="btn btn-dark hidden" id="pause_button" style="display:none;"><i class="fas fa-pause text-light"></i></button>
+            <button type="button" class="btn btn-dark" id="stop_button" style="display:none;"><i class="fas fa-stop text-light"></i></button>
+            <div class="btn-group" style="display:none;">
+                <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-users"></i></button>
+                <div id="agent_dropdown" class="dropdown-menu">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm" align="right">
+            <button type="button" class="btn btn-dark" id="chat_button" onclick="chatToggle()" data-toggle="collapse" data-target="#chat" aria-expanded="true" aria-controls="chat"><i class="fas fa-comments text-light"></i></button>
+            <button type="button" class="btn btn-dark" id="draw_button" onclick="drawToggle()"><i class="fas fa-pencil-alt text-light"></i></button>
+            <button type="button" class="btn btn-dark" id="erase_button" onclick="eraseToggle()"><i class="fas fa-eraser text-light"></i></button>
+        </div>
+    </div>
+
+
+    <div class="row content-row">
+
+        <!-- Grid -->
+        <div class="col-md grid-container" id="container">
+            <!-- container id is needed for the zoom/pan package -->
+            <div id="grid"></div>
+
+            <!-- Chat -->
+            <div class="collapse show" id="chat">
+                <div class="container-fluid">
+                    <h5>Chats</h5>
+                    <div class="row">
+                        <div class="col-md-auto" id="chat_rooms_list">
+                            <div class="contact contact_active" id="chatroom_global" onclick="chatroom_click(event)">Global<span class="chat-notification" id="chatroom_global_notification"></span></div>
+                            <div class="contact" id="new_chat_button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">+</div>
+                            <div id="new_chat_dropdown" class="dropdown-menu"></div>
+                        </div>
+                        <div class="col-md-auto">
+                            <div id="messages">
+                            </div>
+                            <input class="form-control" id="chat_form_input" placeholder="Type a message">
+                            <button type="button" id="chat_form_submit" class="btn btn-primary" onclick="Verstuur_message(event)">Verstuur</button>
+                        </div>
+                    </div>
+
+
+                    <div id="rescue_worker_communication" class="communication">
+                        <h5>Communicatie met Explorer</h5>
+
+                        <div class="row">Bepaal de status van gebouw
+                            <select class="form-control-sm buildings" id="rw_building_status_select">
+                                <option value="placeholder" disabled selected>building...</option>
+                                <option>B1</option>
+                                <option>B2</option>
+                                <option>B3</option>
+                                <option>B4</option>
+                                <option>B5</option>
+                                <option>B6</option>
+                                <option>B7</option>
+                                <option>B8</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary btn-sm" id="rw_building_status">Verstuur</button>
+                        </div>
+
+                        <div class="row">Verwijder het puin voor de ingang van gebouw
+                            <select class="form-control-sm buildings" id="rw_open_door_select">
+                                <option value="placeholder" disabled selected>gebouw...</option>
+                                <option>B1</option>
+                                <option>B2</option>
+                                <option>B3</option>
+                                <option>B4</option>
+                                <option>B5</option>
+                                <option>B6</option>
+                                <option>B7</option>
+                                <option>B8</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary btn-sm" id="rw_open_door">Verstuur</button>
+                        </div>
+
+                        <div class="row">
+                            Rapporteer de status van je batterij.
+                            <button type="submit" class="btn btn-primary btn-sm" id="rw_battery_status">Verstuur</button>
+                        </div>
+
+                        <div class="row">
+                            Stop met je huidige taak.
+                            <button type="submit" class="btn btn-primary btn-sm" id="rw_stop_task">Verstuur</button>
+                        </div>
+
+                        <div class="row">
+                            Ga verder met je vorige taak.
+                            <button type="submit" class="btn btn-primary btn-sm" id="rw_continue_task">Verstuur</button>
+                        </div>
+
+                        <div class="row">
+                            Lokaliseer en meld slachtoffers in gebouw
+                            <select class="form-control-sm buildings" id="rw_locate_victims_select">
+                                <option value="placeholder" disabled selected>gebouw...</option>
+                                <option>B1</option>
+                                <option>B2</option>
+                                <option>B3</option>
+                                <option>B4</option>
+                                <option>B5</option>
+                                <option>B6</option>
+                                <option>B7</option>
+                                <option>B8</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary btn-sm" id="rw_locate_victims">Verstuur</button>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            Breng slachtoffer
+                            <select class="form-control-sm victim_dropdown" id="rw_victim_to_cp_select1">
+                                <option value="placeholder" disabled selected>slachtoffer...</option>
+                            </select>
+                            naar de commandopost.
+                            <button type="submit" class="btn btn-primary btn-sm" id="rw_victim_to_cp">Verstuur</button>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            Verplaats slachtoffer
+                            <select class="form-control-sm buildings victim_dropdown" id="rw_victim_outside_select1">
+                                <option value="placeholder" disabled selected>slachtoffer...</option>
+                            </select>
+
+                            buiten het gebouw.
+                            <button type="submit" class="btn btn-primary btn-sm" id="rw_victim_outside">Verstuur</button>
+                        </div>
+
+                    </div>
+
+                    <div id="explorer_communication" class="communication">
+                        <h5>Communicatie met Rescue Worker</h5>
+
+                        <div class="row">Gebouw
+                            <select class="form-control-sm buildings" id="expl_building_status_select1">
+                                <option value="placeholder" disabled selected>gebouw...</option>
+                                <option>B1</option>
+                                <option>B2</option>
+                                <option>B3</option>
+                                <option>B4</option>
+                                <option>B5</option>
+                                <option>B6</option>
+                                <option>B7</option>
+                                <option>B8</option>
+                            </select>
+                            heeft status ingestort
+                            <select class="form-control-sm buildings" id="expl_building_status_select2">
+                                <option value="placeholder" disabled selected>status...</option>
+                                <option>ja</option>
+                                <option>nee</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary btn-sm" id="expl_building_status">Verstuur</button>
+                        </div>
+
+                        <div class="row">In gebouw
+                            <select class="form-control-sm buildings" id="expl_n_victims_select1">
+                                <option value="placeholder" disabled selected>gebouw...</option>
+                                <option>B1</option>
+                                <option>B2</option>
+                                <option>B3</option>
+                                <option>B4</option>
+                                <option>B5</option>
+                                <option>B6</option>
+                                <option>B7</option>
+                                <option>B8</option>
+                            </select>
+                            zijn er
+                            <select class="form-control-sm buildings" id="expl_n_victims_select2">
+                                <option value="placeholder" disabled selected>?</option>
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                            slachtoffers
+                            <button type="submit" class="btn btn-primary btn-sm" id="expl_n_victims">Verstuur</button>
+                        </div>
+
+                        <div class="row">
+                            Verstuur batterij status.
+                            <button type="submit" class="btn btn-primary btn-sm" id="expl_battery_status">Verstuur</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!-- Context menu -->
+    <div class="dropdown-menu" id="contextMenu" style="display:none">
+        <!-- <a class="dropdown-item" href="#">Action 1</a> -->
+        <!-- <a class="dropdown-item" href="#">Action 2</a> -->
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/static/dist/jquery/jquery-3.4.1.min.js"></script>
+    <script src="/static/dist/popper/popper-1.16.0.js"></script>
+    <script src="/static/dist/bootstrap/bootstrap-4.4.1.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="/static/js/toolbar.js"></script>
+    <script src="/static/js/context_menu.js"></script>
+    <script type="text/javascript" src="/static/js/gen_grid.js"></script>
+    <script type="text/javascript" src="/static/js/loop.js"></script>
+    <script type="text/javascript" src="/static/js/human_agent.js"></script>
+    <script type="text/javascript" src="/static/js/aims.js"></script>
+</body>
+
+</html>

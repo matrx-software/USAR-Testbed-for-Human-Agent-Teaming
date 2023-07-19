@@ -1,0 +1,9 @@
+world_builder.py -> comment line 7: from noise import snoise2, because of package install error
+grid_world.py -> comments lines 364/365: Clear previously send messages, because of bug
+main.py -> use aims scenario
+env_object.py -> line 79: obj_id = name
+drawGrid.js -> draw object properties
+drawGrid.js -> remove draw FPS and TPS
+object_actions.py -> remove 'True, ' from last return of possible_drop
+env_object.py -> in change_property() change customizable.properties to custom.properties
+main.py -> only run one world. world = factory.get_world(); world.run()

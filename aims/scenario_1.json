@@ -1,0 +1,129 @@
+{
+  "world" :
+  {
+    "shape" : [30, 20],
+    "tick_duration" : 0.1,
+    "max_ticks" : 10000
+  },
+
+
+
+  "rooms" :
+  [
+    {
+      "top_left" : [0, 0],
+      "dimensions" : [4 ,5],
+      "door" : "right",
+      "collapsed" : false
+    },
+    {
+      "top_left" : [7, 0],
+      "dimensions" : [5 ,4],
+      "door" : "bottom",
+      "collapsed" : false
+    },
+    {
+      "top_left" : [18, 1],
+      "dimensions" : [5 ,4],
+      "door" : "top",
+      "collapsed" : false
+    },
+    {
+      "top_left" : [0, 8],
+      "dimensions" : [4 ,5],
+      "door" : "right",
+      "collapsed" : false
+    },
+    {
+      "top_left" : [12, 6],
+      "dimensions" : [4 ,5],
+      "door" : "left",
+      "collapsed" : false
+    },
+    {
+      "top_left" : [26, 7],
+      "dimensions" : [4 ,5],
+      "door" : "left",
+      "collapsed" : false
+    },
+    {
+      "top_left" : [3, 16],
+      "dimensions" : [5 ,4],
+      "door" : "top",
+      "collapsed" : false
+    },
+    {
+      "top_left" : [10, 15],
+      "dimensions" : [4 ,5],
+      "door" : "left",
+      "collapsed" : false
+    }
+  ],
+
+
+
+  "command_post" :
+  {
+    "top_left" : [19, 15],
+    "dimensions" : [7 ,5],
+    "door" : "top"
+  },
+
+
+
+  "victims" :
+  [
+    {
+      "location" : [1, 1],
+      "alive" : true,
+      "treatment_need" : 0,
+      "need_increase_time" : 0
+    }
+  ],
+
+
+
+  "rescue_worker" :
+  {
+    "name" : "rescue_worker",
+    "location" : [10, 9],
+    "color": "#92f440"
+  },
+
+
+
+    "explorer" :
+  {
+    "name" : "explorer",
+    "location" : [11, 9],
+    "color" : "#00ffff",
+    "energy": 600
+  },
+
+
+
+  "earthquakes" :
+  [
+    {
+      "time" : 10,
+      "epicenter" : [9, 9],
+      "radius": 10
+    }
+  ],
+
+
+
+  "manual_earthquake" :
+  {
+    "epicenter" : [9, 9],
+    "affected_buildings" : ["B1", "B2", "B3"],
+    "affected_victims" : ["victim1", "victim2"]
+  },
+
+
+
+
+  "p_collapse_after_earthquake" : 0.8,
+  "p_victim_gets_hurt_after_room_collapse" : 0.8,
+  "max_battery_replacements" : 3
+}

@@ -1,0 +1,8 @@
+Type;ID;Property1;Value1;Property2;Value2;Property3;Value3;Property4;Value4;Property5;Value5
+rooms;r1;collapsed;false;door;bottom;;;;;;
+;r2;collapsed;true;door;bottom;;;;;;
+;;;;;;;;;;;
+victims;v1;alive;true;treatment_need;1;need_increase_time;100;;;;
+;v2;alive;true;treatment_need;2;need_increase_time;100;;;;
+;;;;;;;;;;;
+earthquakes;e1;time;10;radius;10;;;;;;
